@@ -24,6 +24,9 @@ jobs:
       - name: Checkout to the branch
         uses: actions/checkout@v2
 
+      - name: Update db url
+        run: sed -i 's/<app_name>/${{ secrets.app_name }}/' src/main/resources/application.properties
+
       - name: Azure Login
         uses: azure/login@v1
         with:
